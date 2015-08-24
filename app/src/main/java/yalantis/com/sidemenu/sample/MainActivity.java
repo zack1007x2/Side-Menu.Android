@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -163,9 +164,13 @@ public class MainActivity extends ActionBarActivity implements ViewAnimator.View
     }
 
     @Override
-    public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int position) {
+    public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int
+            position, boolean isLightSeek,SeekBar SeekView) {
         switch (slideMenuItem.getName()) {
             case ContentFragment.CLOSE:
+                return screenShotable;
+            case ContentFragment.BUILDING:
+                viewAnimator.SeekanimateView(position,SeekView);
                 return screenShotable;
             default:
                 return replaceFragment(screenShotable, position);
